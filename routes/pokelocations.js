@@ -4,7 +4,7 @@
  * @created 14-Apr-16 3:10 PM
  */
 module.exports = function(router, Pokemon,PokeLocation, hresp) {
-//Create and get all pokemons
+//Create and get all locations
     router.route('/pokemonlocations')
         .post(function(req, res){
             var pokemon = new Pokemon();
@@ -30,7 +30,7 @@ module.exports = function(router, Pokemon,PokeLocation, hresp) {
             });
         });
 
-    //Get a pokemon
+    //Get a location
     router.route('/pokemons/:pokemon_id')
         .get(function(req, res){
             Pokemon.findById(req.params.pokemon_id, function(err, pokemon){
@@ -41,7 +41,7 @@ module.exports = function(router, Pokemon,PokeLocation, hresp) {
                 hresp.SuccessFind(res, pokemon);
             });
         })
-        //update a pokemon
+        //update a location
         .put(function(req, res){
             Pokemon.findById(req.params.pokemon_id, function(err, pokemon){
                 if(err) {
@@ -62,7 +62,7 @@ module.exports = function(router, Pokemon,PokeLocation, hresp) {
                 });
             });
         })
-        //delete a pokemon
+        //delete a location
         .delete(function(req, res){
 
             Pokemon.findByIdAndRemove({
