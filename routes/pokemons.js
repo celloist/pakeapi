@@ -1,60 +1,58 @@
 /**
  * @author Alhric Lacle <alhriclacle@gmail.com>
  * @project Pakeapi
- * @created 31-Mar-16 1:34 PM
+ * @created 31-Mar-16 2:36 PM
  */
-module.exports = function(router, User, hresp) {
-    /*
-     * GET userlist.
-     */
-    router.route('/users')
+module.exports = function(router, Pokemon, hresp) {
+//Create and get all pokemons
+    router.route('/pokemons')
         .post(function(req, res){
-            var user = new User();
-            user.name = req.body.name;
-            user.password = req.body.password;
-            user.role = req.body.role;
+            var pokemon = new Pokemon();
+            pokemon.name = req.body.name;
+            pokemon.order= req.body.order;
 
 
-            user.save(function(err){
+            pokemon.save(function(err){
                 if(err){
                     hresp.ErrorSaving(res, err);
                     return;
                 }
-                hresp.SuccessSaving(res, user);
+                hresp.SuccessSaving(res, pokemon);
             });
         })
         .get(function(req, res){
-            User.find(function(err, user){
+            Pokemon.find(function(err, pokemon){
                 if(err){
                     hresp.ErrorFind(res, err);
                     return;
                 }
-                hresp.SuccessFind(res, user);
+                hresp.SuccessFind(res, pokemon);
             });
         });
 
-    router.route('/users/:user_id')
+    //Get a pokemon
+    router.route('/pokemons/:pokemon_id')
         .get(function(req, res){
-            User.findById(req.params.user_id, function(err, user){
+            Pokemon.findById(req.params.pokemon_id, function(err, pokemon){
                 if(err){
                     hresp.ErrorFind(res, err);
                     return;
                 }
-                hresp.SuccessFind(res, user);
+                hresp.SuccessFind(res, pokemon);
             });
         })
+        //update a pokemon
         .put(function(req, res){
-            User.findById(req.params.user_id, function(err, user){
+            Pokemon.findById(req.params.pokemon_id, function(err, pokemon){
                 if(err) {
                     hresp.ErrorUpdate(res, err);
                     return;
                 }
 
-                user.name = req.body.name;
-                user.password = req.body.password;
-                user.role = req.body.role;
+                pokemon.name = req.body.name;
+                pokemon.order = req.body.order;
 
-                user.save(function(err){
+                pokemon.save(function(err){
                     if(err){
                         hresp.ErrorSaving(res, err);
                         return;
@@ -64,11 +62,12 @@ module.exports = function(router, User, hresp) {
                 });
             });
         })
+        //delete a pokemon
         .delete(function(req, res){
 
-            User.findByIdAndRemove({
+            Pokemon.findByIdAndRemove({
                 _id: req.params.id
-            }, function(err, user){
+            }, function(err, pokemon){
                 if(err){
                     hresp.ErrorDelete(res, err);
                     return;
