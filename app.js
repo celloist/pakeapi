@@ -13,7 +13,6 @@ mongoose.constructor('');
 
 
 
-
 //Models
 var User = require('./models/user.js');
 var Pokemon = require('./models/pokemon.js');
