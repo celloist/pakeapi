@@ -17,7 +17,6 @@ mongoose.constructor('');
 var User = require('./models/user.js');
 var Pokemon = require('./models/pokemon.js');
 var PokeLocation = require('./models/pokelocation.js')
-var Index = require('./routes/index');
 var router = express.Router();
 
 
@@ -26,7 +25,7 @@ mongoose.connect("mongodb://admin:admin@ds055925.mlab.com:55925/pakeapidb");
 
 // view engine setup
 //app.set('views', path.join(__dirname, 'views'));
-//app.set('view engine', 'jade');
+app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -38,9 +37,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 var userRoutes = require('./routes/users.js')(router, User, hresp);
 var pokemonRoutes = require('./routes/pokemons.js')(router, Pokemon, hresp);
+var index = require('./routes/index.js');
 
 
-app.use('/', Index);
+app.use(index);
 app.use(userRoutes);
 app.use(pokemonRoutes);
 
