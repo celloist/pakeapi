@@ -1,7 +1,26 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+    head
+        title
+        link(rel='stylesheet', href='/stylesheets/foundation.css')
+    body
+        .top-bar
+            .top-bar-left
+                ul.dropdown.menu(data-dropdown-menu='')
+                    li.menu-text PakeApi
+                    li
+                        a(href='/') Home
+                    li
+                        a(href='/heroes') Heroes
+                    li
+                        a(href='/herolocations') Locations
+            .top-bar-right
+                ul.menu
+                    li
+                        a(href="/login") Log in
+        block content
+
+        script(type='text/javascript', src='/javascripts/vendor/jquery.js')
+        script(type='text/javascript', src='/javascripts/vendor/foundation.js')
+        script(type='text/javascript', src='/javascripts/vendor/what-input.js')
+        script(type='text/javascript', src='/javascripts/app.js')

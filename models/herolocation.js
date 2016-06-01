@@ -6,13 +6,13 @@
 var mongoose     = require('mongoose');
 var Schema       = mongoose.Schema;
 
-var PokeLocationSchema   = new Schema({
+var HeroLocationSchema   = new Schema({
     name:{type: String, required: true},
-    pokemon: {type : Schema.Types.ObjectId, ref: 'Pokemon', required: true, unique:true},
+    hero: {type : Schema.Types.ObjectId, ref: 'Hero', required: true, unique:true},
     location : {
         type:[Number],
         index:'2d'
     }
 });
 
-module.exports = mongoose.model('PokeLocation', PokeLocationSchema);
+module.exports = mongoose.model('HeroLocation', HeroLocationSchema);

@@ -1,0 +1,25 @@
+//
+   Created by alhric on 01-Jun-16.
+extends layout.jade
+
+block.content
+    block content
+        h3= title
+        body
+            .row
+                .medium-6.medium-centered.large-4.large-centered.columns
+                    form
+                        .row.column.log-in-form
+                            h4.text-center Log in with your email account
+                            label
+                                | Email
+                                input(type='text', placeholder='somebody@example.com')
+                            label
+                                | Password
+                                input(type='text', placeholder='Password')
+                            input#show-password(type='checkbox')
+                            label(for='show-password') Show password
+                            p
+                                a.button.expanded(type='submit') Log In
+                            p.text-center
+                                a(href='#') Forgot your password?
