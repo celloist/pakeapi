@@ -17,7 +17,13 @@ html
             .top-bar-right
                 ul.menu
                     li
-                        a(href="/login") Log in
+                       if(!user)
+                           a(href="/login") Log in
+                       if(user)
+                           a(href="/logout") Log out
+                    li
+                        if(!user)
+                            a(href="/signup") Sign Up
         block content
 
         script(type='text/javascript', src='/javascripts/vendor/jquery.js')

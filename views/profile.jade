@@ -1,0 +1,22 @@
+//
+   Created by alhric on 03-Jun-16.
+
+extends layout.jade
+
+block content
+    h3= title
+        body
+            .row
+                .medium-12.large-centered.large-4.large-centered.columns
+                        span.info.label
+                            | User info
+                            h3 Local
+                            p
+                                strong id #{user._id}
+                                br
+                                strong email #{user.local.email}
+                                br
+                                strong password #{user.local.password}
+
+
+

@@ -6,16 +6,16 @@
 module.exports = {
 
     'facebookAuth' : {
-        clientID      : '257578534580231', // your App ID
-        clientSecret  : '2bf736b0a67a0702d99e7b52308233a3', // your App Secret
+        clientID      : '1556949461274774', // your App ID
+        clientSecret  : '448650dbf8f368a1e01ef54656bafdc2', // your App Secret
         callbackURL   : 'https://pakeapi.herokuapp.com/auth/facebook/callback',
         profileFields : ['id', 'email', 'name'],
         scope         : ['email']
     },
 
     'googleAuth' : {
-        'clientID'      : '171265629189-m2i25o3tm3a1f9sej4erotr49g9v07jo.apps.googleusercontent.com',
-        'clientSecret'  : '-u-7_nyPU52Rkshr0nhguZt4',
+        'clientID'      : '169520129672-57ivuv0ueekhbmqoiu5bspbt5elcthg4.apps.googleusercontent.com',
+        'clientSecret'  : 'Enqp6M3LrnA_RjvJVibdpB2d',
         'callbackURL'   : 'https://pakeapi.herokuapp.com/auth/google/callback'
     }
 
