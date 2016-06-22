@@ -18,8 +18,18 @@ module.exports = function(router,User,passport) {
         })
         .post(passport.authenticate('local-login', {
             successRedirect : '/profile', // redirect to the secure profile section
-            failureRedirect : '/login', // redirect back to the signup page if there is an error
+            failureRedirect : '/login', // redirect back to the login page if there is an error
             failureFlash : true // allow flash messages
+        }));
+
+    router.route('/auth/facebook')
+        .get( passport.authenticate('facebook', { scope : 'email' })
+        );
+
+    router.route('/auth/facebook/callback')
+        .get(passport.authenticate('facebook', {
+            successRedirect : '/profile',
+            failureRedirect : '/login'
         }));
 
     router.route('/signup')
