@@ -1,60 +1,59 @@
 /**
  * @author Alhric Lacle <alhriclacle@gmail.com>
  * @project Pakeapi
- * @created 14-Apr-16 3:10 PM
+ * @created 31-Mar-16 2:36 PM
  */
-module.exports = function(router, Hero,HeroLocation, hresp) {
-//Create and get all locations
-    router.route('/herolocations')
+module.exports = function(router, Pokemon, hresp) {
+//Create and get all pokemons
+    router.route('/pokemon')
         .post(function(req, res){
-            var herolocation = new HeroLocation();
-            herolocation.name = req.body.name;
-            herolocation.hero= req.body.hero_id;
-            herolocation.location = req.body.location
+            var pokemon = new Pokemon();
+            pokemon.name = req.body.name;
+            pokemon.order= req.body.order;
 
 
-            herolocation.save(function(err){
+            pokemon.save(function(err){
                 if(err){
                     hresp.ErrorSaving(res, err);
                     return;
                 }
-                hresp.SuccessSaving(res, herolocation);
+                hresp.SuccessSaving(res, pokemon);
             });
         })
         .get(function(req, res){
-            HeroLocation.find(function(err, herolocation){
+            Pokemon.find(function(err, pokemon){
                 if(err){
                     hresp.ErrorFind(res, err);
                     return;
                 }
-                hresp.SuccessFind(res, herolocation);
+                hresp.SuccessFind(res, pokemon);
             });
         });
 
-    //Get a location
-    router.route('/herolocations/:herolocation_id')
+    //Get a pokemon
+    router.route('/pokemon/:pokemon_id')
         .get(function(req, res){
-            HeroLocation.findById(req.params.herolocation_id, function(err, herolocation){
+            Pokemon.findById(req.params.pokemon_id, function(err, pokemon){
                 if(err){
                     hresp.ErrorFind(res, err);
                     return;
                 }
-                hresp.SuccessFind(res, herolocation);
+                hresp.SuccessFind(res, pokemon);
             });
         })
-        //update a location
+        //update a pokemon
         .put(function(req, res){
-            HeroLocation.findById(req.params.herolocation_id, function(err, herolocation){
+            Pokemon.findById(req.params.pokemon_id, function(err, pokemon){
                 if(err) {
                     hresp.ErrorUpdate(res, err);
                     return;
                 }
 
-                herolocation.name = req.body.name;
-                herolocation.hero = req.body.hero_id;
-                herolocation.lcoation = req.body.location;
-                
-                herolocation.save(function(err){
+                pokemon.name = req.body.name;
+                pokemon.order = req.body.order;
+                pokemon.type = req.body.type;
+
+                pokemon.save(function(err){
                     if(err){
                         hresp.ErrorSaving(res, err);
                         return;
@@ -64,12 +63,12 @@ module.exports = function(router, Hero,HeroLocation, hresp) {
                 });
             });
         })
-        //delete a location
+        //delete a pokemon
         .delete(function(req, res){
 
-            HeroLocation.findByIdAndRemove({
+            Pokemon.findByIdAndRemove({
                 _id: req.params.id
-            }, function(err, herolocation){
+            }, function(err, pokemon){
                 if(err){
                     hresp.ErrorDelete(res, err);
                     return;

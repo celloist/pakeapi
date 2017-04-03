@@ -6,10 +6,10 @@
 var mongoose     = require('mongoose');
 var Schema       = mongoose.Schema;
 
-var HeroSchema   = new Schema({
+var PokemonSchema   = new Schema({
     name: {type: String, required: true, unique:true},
     order : {type: Number,required: true, unique:true},
     type : {type: String,required: true, unique:true}
 });
 
-module.exports = mongoose.model('Hero', HeroSchema);
+module.exports = mongoose.model('Pokemon', PokemonSchema);

@@ -13,14 +13,16 @@ module.exports = function(router,User,HeroLocation,Hero,NASA,async) {
                         console.log(body);
                         planet = body.explanation;
                         console.log(body.url);
-                        var planetImage = body.url
+                        var planetImage = body.url;
+                        if (!planetImage)
+                            planteImage = 'http://kingofwallpapers.com/mountain-view/mountain-view-005.jpg';
                          res.render('test',
                             {
                                 title: 'View for testing purposes',
                                 planet: planet,
                                 planetImage: planetImage
                             });
-                    },'2016-03-22');
+                    },'2017-03-21');
                     });
 
   return router;

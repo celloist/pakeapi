@@ -1,6 +1,7 @@
 //
-   Created by alhric on 01-Jun-16.
-extends layout.jade
+   Created by alhric on 02-Jun-16.
+
+extends layout.pug
 
 block content
         h3= title
@@ -9,9 +10,9 @@ block content
                     .medium-6.medium-centered.large-4.large-centered.columns
                         if message.length
                             span.round.alert.label #{message}
-                        form#login_form(action='/login', method='post')
+                        form#signup_form(action='/signup', method='post')
                             .row.column.log-in-form
-                                h4.text-center Log in with your email adres
+                                h4.text-center Register with your email account
                                 label
                                     | Email
                                     input#email(type='text', placeholder='somebody@example.com', name='email')
@@ -19,11 +20,11 @@ block content
                                     | Password
                                     input#password(type='password', placeholder='Password', name='password')
                                 p
-                                    a#login_button.button.expanded(type='javascript:{}', role='button', onclick='loginfunc()') Log in
+                                    a#signup_button.button.expanded(type='javascript:{}', role='button', onclick='testfunc()') Register
                                     script.
-                                        function loginfunc() {
-                                            console.log(document.getElementById("login_form").submit());
+                                        function testfunc()
+                                        {
+                                            console.log(document.getElementById("signup_form").submit());
                                         };
                                 p.text-center
-                                    a(href='/nope') Forgot password? that sucks
-                        a.webicon.facebook(href='#') derpaherp
+                                    a(href='login') Already have an account?

@@ -20,8 +20,8 @@ mongoose.constructor('');
 
 //Models
 var User = require('./models/user.js');
-var Hero = require('./models/hero.js');
-var HeroLocation = require('./models/herolocation.js')
+var Pokemon = require('./models/pokemon.js');
+var PokemonLocation = require('./models/pokemonlocation.js')
 var Role = require('./models/role.js');
 var router = express.Router();
 
@@ -37,7 +37,7 @@ var dota = new dota2Api('CC8D48FF51F0A7630482334927F4AB37');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -60,15 +60,15 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 // routes ======================================================================
 var userRoutes = require('./routes/users.js')(router, User, hresp);
-var heroRoutes = require('./routes/heroes.js')(router, Hero, hresp);
-var heroLocationRoutes = require('./routes/herolocations.js')(router, Hero,HeroLocation, hresp);
-var views = require('./routes/views.js')(router,User,HeroLocation,Hero,NASA,async);
+var pokemonRoutes = require('./routes/pokemon.js')(router, Pokemon, hresp);
+var pokemonLocationRoutes = require('./routes/pokemonlocations.js')(router, Pokemon,PokemonLocation, hresp);
+var views = require('./routes/views.js')(router,User,PokemonLocation,Pokemon,NASA,async);
 var auth = require('./routes/authentication.js')(router,User,passport);
 
 app.use(views);
 app.use(userRoutes);
-app.use(heroRoutes);
-app.use(heroLocationRoutes);
+app.use(pokemonRoutes);
+app.use(pokemonLocationRoutes);
 app.use(auth);
 
 // catch 404 and forward to error handler
