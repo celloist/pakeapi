@@ -6,23 +6,31 @@ module.exports = function(router,User,HeroLocation,Hero,NASA,async) {
               title: 'Welcome to my dota api'
             });
       });
-    router.route('/test')
+    router.route('/apod')
         .get(function (req, res) {
-            var planet ="fuck async";
+            res.render('apod',
+                {
+                    title: 'Please pick a date'
+                });
+        });
+    router.route('/apod/:date')
+        .get(function (req, res) {
+            var date = req.params.date;
                     NASA.Apod(function(body,err) {
-                        console.log(body);
-                        planet = body.explanation;
-                        console.log(body.url);
+
+                        var planet = body.explanation;
                         var planetImage = body.url;
+                        var title = body.title;
+
                         if (!planetImage)
                             planteImage = 'http://kingofwallpapers.com/mountain-view/mountain-view-005.jpg';
                          res.render('test',
                             {
-                                title: 'View for testing purposes',
+                                title: title,
                                 planet: planet,
                                 planetImage: planetImage
                             });
-                    },'2017-03-21');
+                    },date);
                     });
 
   return router;

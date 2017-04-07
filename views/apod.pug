@@ -1,0 +1,9 @@
+extends layout.pug
+
+block content
+    h3= title
+    mixin chooseDate()
+        +b.choose-date
+            +e.datepicker
+                input(type='text' placeholder='Pick a date')
+                +fontIcon({name: 'calendar'})

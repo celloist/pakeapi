@@ -10,7 +10,7 @@ module.exports = function(router, Hero,HeroLocation, hresp) {
             var herolocation = new HeroLocation();
             herolocation.name = req.body.name;
             herolocation.pokemon= req.body.hero_id;
-            herolocation.location = req.body.location
+            herolocation.location = req.body.location;
 
 
             herolocation.save(function(err){
