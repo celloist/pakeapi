@@ -21,8 +21,7 @@ mongoose.constructor('');
 //Models
 var User = require('./models/user.js');
 var Pokemon = require('./models/pokemon.js');
-var PokemonLocation = require('./models/pokemonlocation.js')
-var Role = require('./models/role.js');
+var PokemonLocation = require('./models/pokemonlocation.js');
 var router = express.Router();
 
 
@@ -30,7 +29,7 @@ var app = express();
 
 //config
 mongoose.connect("mongodb://admin:admin@ds055925.mlab.com:55925/pakeapidb");
-require('./resources/passport')(passport,User,Role); // pass passport for configuration
+require('./resources/passport')(passport,User); // pass passport for configuration
 
 //TODO dota stuff
 var dota = new dota2Api('CC8D48FF51F0A7630482334927F4AB37');

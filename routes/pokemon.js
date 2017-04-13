@@ -6,6 +6,7 @@
 module.exports = function(router, Pokemon, hresp) {
 //Create and get all pokemons
     router.route('/pokemon')
+        //save a pokemon
         .post(function(req, res){
             var pokemon = new Pokemon();
             pokemon.name = req.body.name;

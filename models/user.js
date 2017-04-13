@@ -11,7 +11,12 @@ var UserSchema   = new Schema({
     
     local            : {
         email        : String,
-        password     : String
+        password     : String,
+        role         : {
+            type: String,
+            enum: ['ADMIN','USER'],
+            default: 'USER'
+        }
     },
     facebook         : {
         id           : String,
