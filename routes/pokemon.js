@@ -21,6 +21,7 @@ module.exports = function(router, Pokemon, hresp) {
                 hresp.SuccessSaving(res, pokemon);
             });
         })
+        // get all pokemon
         .get(function(req, res){
             Pokemon.find(function(err, pokemon){
                 if(err){

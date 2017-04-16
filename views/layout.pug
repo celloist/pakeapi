@@ -3,8 +3,8 @@ html
     head
         title
         link(rel='stylesheet', href='/stylesheets/foundation.css')
-        link(rel='stylesheet', href='/stylesheets/webicons.css')
         link(rel='stylesheet', href='/stylesheets/style.css')
+        link(rel='stylesheet', href='/stylesheets/webicons.css')
     body
         .top-bar
             .top-bar-left
@@ -25,6 +25,9 @@ html
                            a(href="/login") Log in
                        if(user)
                            a(href="/logout") Log out
+                       if(user && user.role == "admin")
+                           a(href="/admin/users") Manage users
+                           a(href="/admin/pokemon") Manage Pokemon
                     li
                         if(!user)
                             a(href="/signup") Sign Up

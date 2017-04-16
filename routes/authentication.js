@@ -59,7 +59,7 @@ module.exports = function(router,User,passport) {
 
                 res.render('profile',
                     {
-                        title: 'Profile',
+                        title: (req.user.email || 'user') + 's Profile',
                         user: req.user
                     });
         });

@@ -129,8 +129,8 @@ module.exports = function(passport, User, Role) {
 
                         Role.findOne({ name : 'user' }, function(err, role){
                             if(!role){
-                                return done(null, false, req.flash('signupMessage', 'Internal server error. Please contact administrator'));}
-                            newUser.role = role._id;
+                                newUser.role = 'USER';
+                            }
                             newUser.save(function(err) {
                                 if (err){ throw err; }
                                 return done(null, newUser);

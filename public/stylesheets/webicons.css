@@ -255,7 +255,8 @@
 .no-svg .webicon.facebook.small {
   background: url("webicons/webicon-facebook-s.png"); }
 
-.svg .webicon.facebook {
+.svg.webicon.facebook {
+  margin-left: 45%;
   background: url("webicons/webicon-facebook.svg"); }
 
 .no-svg .webicon.flickr {
@@ -327,7 +328,7 @@
 .no-svg .webicon.google.small {
   background: url("webicons/webicon-google-s.png"); }
 
-.svg .webicon.google {
+.svg.webicon.google {
   background: url("webicons/webicon-google.svg"); }
 
 .no-svg .webicon.googleplay {
