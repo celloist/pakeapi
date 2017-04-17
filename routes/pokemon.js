@@ -3,7 +3,7 @@
  * @project Pakeapi
  * @created 31-Mar-16 2:36 PM
  */
-module.exports = function(router, Pokemon, hresp) {
+module.exports = function(router, Pokemon, pokeApi, hresp) {
 //Create and get all pokemons
     router.route('/pokemon')
         //save a pokemon
@@ -77,6 +77,18 @@ module.exports = function(router, Pokemon, hresp) {
                 }
                 hresp.SuccessDelete(res);
             });
+        });
+
+    router.route('/pokemon/api/:pokemon_id')
+        .get(function(req,res){
+            pokeApi.getPokemon(req.params.pokemon_id,function(pokemon,err){
+                if(err){
+                    hresp.ErrorDelete(res, err);
+                    return;
+                }
+                res.pokemon = pokemon;
+                hresp.SuccessDelete(res);
+            })
         });
 
     return router;

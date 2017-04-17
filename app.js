@@ -5,15 +5,17 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var hresp = require('./resources/response.js');
-var dota2Api = require('dota2api');
 var passport = require('passport');
 var flash    = require('connect-flash');
 var morgan   = require('morgan');
 var session  = require('express-session');
 var mongoose = require('mongoose');
-var NASAmodule = require('./modules/nasa.js');
+var NASA = require('./modules/nasa.js');
+var pokeApi = require('./modules/pokeapi.js');
+pokeApi = new pokeApi();
+var pokeNode = require('pokenode');
 var keys = require('./resources/config.js');
-var NASA = new NASAmodule(keys.NASAKey);
+NASA = new NASA(keys.NASAKey);
 var async = require('async');
 mongoose.constructor('');
 
@@ -30,9 +32,6 @@ var app = express();
 //config
 mongoose.connect("mongodb://admin:admin@ds055925.mlab.com:55925/pakeapidb");
 require('./resources/passport')(passport,User); // pass passport for configuration
-
-//TODO dota stuff
-var dota = new dota2Api('CC8D48FF51F0A7630482334927F4AB37');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -59,7 +58,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 // routes ======================================================================
 var userRoutes = require('./routes/users.js')(router, User, hresp);
-var pokemonRoutes = require('./routes/pokemon.js')(router, Pokemon, hresp);
+var pokemonRoutes = require('./routes/pokemon.js')(router, Pokemon, pokeApi, hresp);
 var pokemonLocationRoutes = require('./routes/pokemonlocations.js')(router, Pokemon,PokemonLocation, hresp);
 var views = require('./routes/views.js')(router,User,PokemonLocation,Pokemon,NASA,async);
 var auth = require('./routes/authentication.js')(router,User,passport);

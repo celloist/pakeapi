@@ -144,7 +144,7 @@ module.exports = function(passport, User, Role) {
     passport.use(new GoogleStrategy({
             clientID        : configAuth.googleAuth.clientID,
             clientSecret    : configAuth.googleAuth.clientSecret,
-            callbackURL     : configAuth.googleAuth.callbackURL,
+            callbackURL     : configAuth.googleAuth.callbackURL
         },
         function(token, refreshToken, profile, done) {
             process.nextTick(function() {

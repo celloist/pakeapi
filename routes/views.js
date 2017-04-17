@@ -1,9 +1,9 @@
-module.exports = function(router,User,HeroLocation,Hero,NASA,async) {
+module.exports = function(router,User,PokemonLocation,Pokemon,NASA) {
   router.route('/')
       .get(function (req, res) {
         res.render('index',
             {
-              title: 'Welcome to my dota api'
+              title: 'Welcome to my Pokemon api'
             });
       });
     router.route('/apod')
@@ -22,8 +22,6 @@ module.exports = function(router,User,HeroLocation,Hero,NASA,async) {
                         var planetImage = body.url;
                         var title = body.title;
 
-                        if (!planetImage)
-                            planteImage = 'http://kingofwallpapers.com/mountain-view/mountain-view-005.jpg';
                          res.render('test',
                             {
                                 title: title,
@@ -34,4 +32,4 @@ module.exports = function(router,User,HeroLocation,Hero,NASA,async) {
                     });
 
   return router;
-}
+};

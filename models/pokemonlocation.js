@@ -8,7 +8,9 @@ var Schema       = mongoose.Schema;
 
 var PokemonLocation   = new Schema({
     name:{type: String, required: true},
-    pokemon: {type : Schema.Types.ObjectId, ref: 'Pokemon', required: true, unique:true},
+    pokemon: [{
+        type : Schema.Types.ObjectId, ref: 'Pokemon'
+    }],
     location : {
         type:[Number],
         index:'2d'

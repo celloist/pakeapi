@@ -14,33 +14,10 @@ var DEFAULTS = {
 };
 
 var NASA = function(api_key) {
-    var self = this;//good coding practice
+    var self = this;
     self.api_key = api_key || DEFAULTS.api_key
 };
 
-// NASA.prototype.Apod = function(date,hd,concept_tags) {
-//     var url = STARTURI +'planetary/apod';
-//
-//     var qs = {
-//         api_key: this.api_key,
-//         date: date || '1996-06-16',
-//         hd: hd || false,
-//         concept_tags: concept_tags || DEFAULTS.concept_tags
-//
-//     };
-//     console.log("before all");
-//      return request({url: url, qs:qs})
-//          .then(function (body,callback) {
-//          console.log("comes here");
-//          parsed = JSON.parse(body);
-//          if (parsed.error) {
-//              throw new Error(parsed.error);
-//          } else {
-//              callback(parsed)
-//              return parsed;
-//          }
-//      })
-// };
 
 NASA.prototype.Apod = function(callback,date,hd){
     var url = STARTURI +'planetary/apod';
@@ -60,7 +37,7 @@ NASA.prototype.Apod = function(callback,date,hd){
             body = parsed;
         }
 
-        if (err|| res.statusCode != 200) {
+        if (err|| res.statusCode !== 200) {
             err = res.statusCode;
         }
         
