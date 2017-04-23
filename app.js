@@ -56,12 +56,14 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 
-// routes ======================================================================
+// routes
 var userRoutes = require('./routes/users.js')(router, User, hresp);
 var pokemonRoutes = require('./routes/pokemon.js')(router, Pokemon, pokeApi, hresp);
 var pokemonLocationRoutes = require('./routes/pokemonlocations.js')(router, Pokemon,PokemonLocation, hresp);
-var views = require('./routes/views.js')(router,User,PokemonLocation,Pokemon,NASA,async);
 var auth = require('./routes/authentication.js')(router,User,passport);
+
+// frontend routes
+var views = require('./routes-frontend/views.js')(router,User,PokemonLocation,Pokemon,NASA,async);
 
 app.use(views);
 app.use(userRoutes);
